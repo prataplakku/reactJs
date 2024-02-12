@@ -1,0 +1,53 @@
+import './App.css';
+import {Userprop} from "./User.js";
+//import styles from "./App.module.css";
+//for the above way to import, App.css should be renamed as App.module.css
+// div statement should be written in the following way: <div className = {styels.App}
+//inline styles should be mentioned in quotes and "-" hipen should not be used for backgroundcolor attribute. 
+
+function App() {
+  const age = 15;
+  const isGreen = true; 
+  const names = ["prathap", "reddy", "lakku", "krish", "tulasi"];
+  const users = [
+    {name: "prathap", age : 29},
+    { name: "krishna", age: 31},
+    {name: "Tulasi", age: 35}
+  ]
+
+  const planets = [
+    {name:"Mars", isGasPlanet: false },
+    {name:"Earth", isGasPlanet: false },
+    {name:"Jupyter", isGasPlanet: true },
+    {name:"venus", isGasPlanet: false }
+]
+  return (
+    <div className="App"> 
+    {age>=18 ? <h1> Over Age</h1> : <h1>Under Age</h1> } 
+    <h1 style={ {color: isGreen ? "green" : "red"}}> This has Color </h1>
+    {isGreen && <button> This is a button</button>}
+    {names.map((name, key) => {
+      return <h1 key ={key} > {name} </h1>
+    })}
+    {
+      users.map((user, key) =>{
+        return <h1 key = {key}> {user.name} is  {user.age} year old</h1>
+      })
+    }
+
+    {users.map((user, key) => {
+      return <Userprop name = {user.name} age = {user.age} />;
+    })}
+
+    {planets.map((planet,key)=> !planet.isGasPlanet && <h1> {planet.name} is a gassy planet</h1>
+      )}
+    </div>
+  );
+}
+export const Userprop = (props) =>{
+    return (<div> {props.name} is  {props.age} year old from Userprop </div>)
+  }
+
+
+
+export default App;
