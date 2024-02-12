@@ -1,0 +1,35 @@
+Basic Job Postings:
+Basic Intro App
+ 
+import './App.css';
+//import styles from "./App.module.css";
+//for the above way to import, App.css should be renamed as App.module.css
+// div statement should be written in the following way: <div className = {styels.App}
+
+function App() {
+  return (
+    <div className="App"> 
+    <Job position = "SDE" salary = {150000} company = "Amazon" />
+    <Job  position = "Analyst" salary = {120000} company = "Google"/>
+    <Job  position = "Data Engineer" salary = {100000} company = "Meta"/>
+    </div>
+  );
+}
+
+
+const Job = (props) => {
+  return (
+    <div>
+  <h1>
+    Job Position: {props.position}
+  </h1>
+  <h1> 
+    Salary : {props.salary}
+  </h1>
+  <h1> 
+    Company : {props.company}
+  </h1>
+  </div>
+  )
+}
+export default App;
