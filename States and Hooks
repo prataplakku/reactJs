@@ -1,0 +1,56 @@
+//States and Hooks
+import './App.css';
+import {useState} from "react";
+//since input type is text, black quotes is used in the useState function
+function App() {
+  const [inputValue, setInputValue] = useState("");
+
+//setInputValue  acts as a function which takes some value and assigns it to inputValue
+  const handleInputChange = (event) => {
+    setInputValue(event.target.value);
+  };
+
+  const [showText, sethideOrShow] = useState(true);
+
+  const handleHeaderText = () =>{
+    sethideOrShow(!showText)
+  };
+
+  const [textColor, setTextColor] = useState("black");
+
+  const[number, setNumber] = useState(0);
+
+  return(
+   <div className="App">
+    <input type = "text" onChange = {handleInputChange} />
+    {inputValue}
+    <br></br>
+    <br></br>
+    <br></br>
+
+    <button onClick={handleHeaderText}> Show/Hide</button>
+    <br></br>
+    <br></br>
+    <br></br>
+
+    <button onClick={()=> { setTextColor(textColor==='black' ? 'red': 'black')}} > Change Text Color</button>
+
+    {showText && <h1 style={{color: textColor }}> Hi My name is Prathap</h1>}
+
+
+    <br></br>
+    <br></br>
+    <br></br>
+
+    <button onClick={()=> { setNumber(number+1)}}>increase</button>
+    <button onClick={()=> {setNumber(number-1)}}>decrease</button>
+    <button onClick={()=>{setNumber(0)}}>set to zero </button>
+    {number}
+
+    {<h1> {number}</h1>}
+   </div>
+  );
+}
+
+
+export default App;
